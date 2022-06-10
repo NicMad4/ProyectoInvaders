@@ -1,5 +1,4 @@
-import {Nave} from './Nave.js'
-import {Enemigo} from './Enemigo.js'
+
 
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
@@ -8,18 +7,18 @@ canvas.style.backgroundColor = "black";
 
 
 let imagenNave = document.getElementById('nave')
-console.log(imagenNave)
+//console.log(imagenNave)
 
 
 const nave= new Nave(300,600,100,100,imagenNave);
-console.log(nave)
+//console.log(nave)
 
 let imagenEnemigo = document.getElementById('enemigo')
-console.log(imagenEnemigo)
+//console.log(imagenEnemigo)
 
 
 const enemigo= new Enemigo(300,0,50,50,imagenEnemigo);
-console.log(enemigo)
+//console.log(enemigo)
 /*const jugar = () => {
     for (let obstaculo of obstaculos) {
       obstaculo.borrar();
@@ -53,4 +52,13 @@ console.log(enemigo)
   
   };
 
+  const logKey = (e) => {
+    e.preventDefault();
+    //nave.borrar();
+    nave.moverNave(e.key);
+    //nave.dibujar();
+  };
+
+
   window.addEventListener("load", cargaInicial);
+  window.addEventListener("keydown", logKey);

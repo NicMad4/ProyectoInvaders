@@ -1,4 +1,4 @@
-export class Enemigo{
+ class Enemigo{
     constructor(x,y,width,height,imagen){
     this.x=x;
     this.y=y;
