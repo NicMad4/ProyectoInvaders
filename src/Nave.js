@@ -15,14 +15,14 @@ dibujar(ctx) {
  }
 
   //esto lo creamos fuera
-//   borrar() {
-//     ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height);
-//   }
+  borrar(ctx) {
+    ctx.clearRect(this.x, this.y, this.width, this.height);
+   }
   //generar
 
   moverNave(key) {
    console.log(key)
-   
+   this.borrar(ctx);
     if (key === "ArrowLeft") {
       if (this.x > 0) {
         this.x = this.x - 20;
