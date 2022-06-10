@@ -14,23 +14,23 @@ dibujar(ctx) {
     console.log(ctx)
  }
 
-  //esto lo creamos fuera
+  
   borrar(ctx) {
     ctx.clearRect(this.x, this.y, this.width, this.height);
    }
-  //generar
+  
 
   moverNave(key) {
    console.log(key)
    this.borrar(ctx);
     if (key === "ArrowLeft") {
-      if (this.x > 0) {
+      if (this.x > -20) {
         this.x = this.x - 20;
       }
     }
     
     if (key === "ArrowRight") {
-      if (this.x < 700) {
+      if (this.x < 620) {
         this.x = this.x + 20;
       }
     }
@@ -42,7 +42,7 @@ dibujar(ctx) {
     }
     
     if (key === "ArrowDown") {
-      if (this.y >= 0 && this.y <700) {
+      if (this.y >= 0 && this.y <600) {
         this.y = this.y + 20;
       }
     
