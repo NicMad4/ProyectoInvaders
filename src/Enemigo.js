@@ -1,5 +1,4 @@
-
-export class Nave{
+export class Enemigo{
     constructor(x,y,width,height,imagen){
     this.x=x;
     this.y=y;
@@ -19,4 +18,3 @@ dibujar(ctx) {
 //   }
   //generar
 }
-

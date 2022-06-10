@@ -1,17 +1,25 @@
 import {Nave} from './Nave.js'
+import {Enemigo} from './Enemigo.js'
 
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "lightgray";
-console.log('hola')
+canvas.style.backgroundColor = "black";
+
 
 let imagenNave = document.getElementById('nave')
 console.log(imagenNave)
 
 
-const nave= new Nave(0,200,100,100,imagenNave);
+const nave= new Nave(300,600,100,100,imagenNave);
 console.log(nave)
+
+let imagenEnemigo = document.getElementById('enemigo')
+console.log(imagenEnemigo)
+
+
+const enemigo= new Enemigo(300,0,50,50,imagenEnemigo);
+console.log(enemigo)
 /*const jugar = () => {
     for (let obstaculo of obstaculos) {
       obstaculo.borrar();
@@ -39,6 +47,7 @@ console.log(nave)
   const cargaInicial = () => {
     console.log('entra')
     nave.dibujar(ctx);
+    enemigo.dibujar(ctx);
     //setInterval(jugar, 200);
   //setInterval(crearObstaculos, 3000);
   
