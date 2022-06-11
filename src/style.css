@@ -2,30 +2,19 @@ body {
     font-family: sans-serif;
     text-align: center;
     margin: 0 auto;
-    margin-top: -20px;
-    margin-bottom: 0px;
   }
 
 #nave{display:none;}
 
 #enemigo{display: none;}
 
-#caja{
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: baseline;
-	align-content:flex-start;
-  margin: 20px 50px 0 200px;
+#canvas{
+display: flexbox;
+
 }
 .container{
-  display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: baseline;
-	align-content:flex-start;
-  margin-top: -130px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
   background-color: white;
 }
