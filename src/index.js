@@ -40,23 +40,23 @@ const crearAliens = () => {
 const cargaInicial = () => {
   nave.dibujar();
   setInterval(jugar, 200);
-  setInterval(crearAliens, 2000);
+  setInterval(crearAliens, 2500);
 };
 
 const moverNave = (e) => {
   nave.borrar();
-  if (e.key === "ArrowLeft") {
+  if (e.key === "ArrowLeft"&& nave.x > 0) {
     nave.x -= 10;
   }
-  if (e.key === "ArrowRight") {
+  if (e.key === "ArrowRight"&&nave.x<600) {
     nave.x += 10;
   }
-  if (e.key === "ArrowUp") {
+  /*if (e.key === "ArrowUp") {
     nave.y -= 10;
   }
   if (e.key === "ArrowDown") {
     nave.y += 10;
-  }
+  }*/
   nave.dibujar();
 };
 
