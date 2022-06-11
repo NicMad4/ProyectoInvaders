@@ -12,9 +12,9 @@ dibujar(ctx) {
     ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height);
   }
 
-  //esto lo creamos fuera
-//   borrar() {
-//     ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height);
-//   }
-  //generar
+ 
+borrar(ctx) {
+    ctx.drawImage(this.imagen, this.x, this.y, this.width, this.height);
+  }
+  
 }
