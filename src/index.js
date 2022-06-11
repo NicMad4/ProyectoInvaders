@@ -1,64 +1,69 @@
-
-
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "black";
+canvas.style.backgroundColor = "lightgray";
 
+let naveImagen = new Image();
+naveImagen.src = "src/imagenes/spaceship.png";
 
-let imagenNave = document.getElementById('nave')
-//console.log(imagenNave)
+let alienImagen = new Image();
+alienImagen.src = "src/imagenes/alien.png";
 
+const aliens = [];
 
-const nave= new Nave(300,600,100,100,imagenNave);
-//console.log(nave)
+const nave = new Objeto(300, 600, 100, 100, naveImagen, ctx);
 
-let imagenEnemigo = document.getElementById('enemigo')
-//console.log(imagenEnemigo)
-
-
-const enemigo= new Enemigo(300,0,50,50,imagenEnemigo);
-//console.log(enemigo)
-/*const jugar = () => {
-    for (let obstaculo of obstaculos) {
-      obstaculo.borrar();
-      obstaculo.y -= 5;
-      obstaculo.dibujar();
-      if (coche.detectarColision(obstaculo)) {
-        console.log("Has perdido");
-      }
+const jugar = () => {
+  for (let alien of aliens) {
+    alien.borrar();
+    alien.y += 5;
+    alien.dibujar();
+    if (nave.detectarColision(alien)) {
+      console.log("Has perdido");
     }
-  };
-  
-  const crearObstaculos = () => {
-    const randomPositionX = Math.floor(Math.random() * 480);
-    const obstaculo = new Objeto(
-      randomPositionX,
-      570,
-      120,
-      60,
-      obstaculoImagen,
-      ctx
-    );
-    obstaculos.push(obstaculo);
-  };*/
+  }
+};
 
-  const cargaInicial = () => {
-    console.log('entra')
-    nave.dibujar(ctx);
-    enemigo.dibujar(ctx);
-    //setInterval(jugar, 200);
-  //setInterval(crearObstaculos, 3000);
-  
-  };
+const crearAliens = () => {
+  const randomPositionX = Math.floor(Math.random() * 650);
+  const alien = new Objeto(
+    randomPositionX,
+    0,
+    50,
+    50,
+    alienImagen,
+    ctx
+  );
+  aliens.push(alien);
+};
 
-  const logKey = (e) => {
-    e.preventDefault();
-    //nave.borrar();
-    nave.moverNave(e.key);
-    //nave.dibujar();
-  };
+const cargaInicial = () => {
+  nave.dibujar();
+  setInterval(jugar, 200);
+  setInterval(crearAliens, 2000);
+};
 
+const moverNave = (e) => {
+  nave.borrar();
+  if (e.key === "ArrowLeft") {
+    nave.x -= 10;
+  }
+  if (e.key === "ArrowRight") {
+    nave.x += 10;
+  }
+  if (e.key === "ArrowUp") {
+    nave.y -= 10;
+  }
+  if (e.key === "ArrowDown") {
+    nave.y += 10;
+  }
+  nave.dibujar();
+};
 
-  window.addEventListener("load", cargaInicial);
-  window.addEventListener("keydown", logKey);
+window.addEventListener("load", cargaInicial);
+
+window.addEventListener("keydown", moverNave);
+
+//Rotar imagen
+//Que vaya a unas coordenadas
+//Mover(1,-1)
