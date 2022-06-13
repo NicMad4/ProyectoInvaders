@@ -1,7 +1,7 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "lightgray";
+canvas.style.backgroundColor = "lightgray";//color de fondo del canvas (una estupidez porque no se ve)
 
 let naveImagen = new Image();
 naveImagen.src = "src/imagenes/spaceship.png";
@@ -39,9 +39,7 @@ const jugar = () => {
       estaCorriendo=false
       console.log('Game Over')
       //alert ("Game Over");
-      if (alien.detectarColision(balas)) {
-         console.log('muere marciano')
-         }
+     
       
       
     }
@@ -132,10 +130,10 @@ const dispara = (i) => {
 
 
 
-window.addEventListener("load", cargaInicial);
+window.addEventListener("load", cargaInicial);//Aqui empieza todo
 
-window.addEventListener("keydown", moverNave);
+window.addEventListener("keydown", moverNave);//aqui empieza el movimiento de comandos
 
-window.addEventListener("keydown", dispara);
+window.addEventListener("keydown", dispara);//aqui empieza el pew pew
 
 
