@@ -9,18 +9,43 @@ naveImagen.src = "src/imagenes/spaceship.png";
 let alienImagen = new Image();
 alienImagen.src = "src/imagenes/alien.png";
 
+let balaImagen = new Image();
+balaImagen.src = "src/imagenes/bala.png"
+
 const aliens = [];
+const balas =[];
 
 const nave = new Objeto(300, 600, 100, 100, naveImagen, ctx);
+
 
 const jugar = () => {
   for (let alien of aliens) {
     alien.borrar();
     alien.y += 5;
     alien.dibujar();
-    if (nave.detectarColision(alien)) {
-      console.log("Has perdido");
+    
+    
+    
+    if (alien.detectarColision(nave)) {
+      console.log('Game Over')
+      //alert ("Game Over");
+      if (alien.detectarColision(balas)) {
+        console.log('muere marciano')
+        }
+      
+      
     }
+  }
+  animarBalas();
+};
+//frustación mode ON
+const animarBalas = () => {
+  for (let bala of balas) {
+    bala.borrar();
+    bala.y -= 60;
+    bala.dibujar();
+    
+  
   }
 };
 
@@ -35,12 +60,27 @@ const crearAliens = () => {
     ctx
   );
   aliens.push(alien);
+ 
 };
+const crearBalas = () => {
+  const randomPositionX = Math.floor(Math.random() * 650);
+  const bala = new Objeto(
+    nave.x + 49,
+     nave.y,
+    4,
+    4,
+    balaImagen,
+    ctx
+  );
+  balas.push(bala);
+}
 
 const cargaInicial = () => {
   nave.dibujar();
   setInterval(jugar, 200);
   setInterval(crearAliens, 2500);
+  
+ 
 };
 
 const moverNave = (e) => {
@@ -51,19 +91,30 @@ const moverNave = (e) => {
   if (e.key === "ArrowRight"&&nave.x<600) {
     nave.x += 10;
   }
-  /*if (e.key === "ArrowUp") {
+  if (e.key === "ArrowUp"&&nave.y>0) {
     nave.y -= 10;
   }
-  if (e.key === "ArrowDown") {
+  if (e.key === "ArrowDown"&& nave.y<600) {
     nave.y += 10;
-  }*/
+  }
   nave.dibujar();
 };
+
+const dispara = (i) => {
+ console.log(i.key)
+  if ( i.key === ' '){ //el puto Space no se llama Space 
+    console.log('dispara')
+   crearBalas();
+  
+  }
+};
+
+
 
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverNave);
 
-//Rotar imagen
-//Que vaya a unas coordenadas
-//Mover(1,-1)
+window.addEventListener("keydown", dispara);
+
+

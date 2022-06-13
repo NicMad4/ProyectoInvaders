@@ -48,9 +48,10 @@ class Objeto {
     }
 
     return "colision";
+
   };
 
-  comprobarPosicionEnCanvas() {
+  /*comprobarPosicionEnCanvas() {
     if (this.x >= ctx.canvas.width - this.ancho) {
       return "derecha";
     }
@@ -64,6 +65,6 @@ class Objeto {
       return "abajo";
     }
     return "dentro";
-  }
+  }*/
 }
 
