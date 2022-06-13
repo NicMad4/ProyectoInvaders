@@ -11,27 +11,37 @@ alienImagen.src = "src/imagenes/alien.png";
 
 let balaImagen = new Image();
 balaImagen.src = "src/imagenes/bala.png"
+let intervalId=''
+let intervalIdAlien=''
 
 const aliens = [];
 const balas =[];
 
 const nave = new Objeto(300, 600, 100, 100, naveImagen, ctx);
-
+let estaCorriendo = true;
 
 const jugar = () => {
+  if(!estaCorriendo){
+    clearInterval(intervalId)
+    clearInterval(intervalIdAlien)
+    
+  }
+  console.log(estaCorriendo)
   for (let alien of aliens) {
     alien.borrar();
     alien.y += 5;
     alien.dibujar();
+
     
     
     
     if (alien.detectarColision(nave)) {
+      estaCorriendo=false
       console.log('Game Over')
       //alert ("Game Over");
       if (alien.detectarColision(balas)) {
-        console.log('muere marciano')
-        }
+         console.log('muere marciano')
+         }
       
       
     }
@@ -44,7 +54,9 @@ const animarBalas = () => {
     bala.borrar();
     bala.y -= 60;
     bala.dibujar();
-    
+   /* if (bala.detectarColision(aliens)) {
+      console.log('muerte a los verdes')
+      }*/
   
   }
 };
@@ -76,15 +88,23 @@ const crearBalas = () => {
 }
 
 const cargaInicial = () => {
-  nave.dibujar();
-  setInterval(jugar, 200);
-  setInterval(crearAliens, 2500);
+  
+    intervalId = setInterval(jugar, 200);
+    intervalIdAlien = setInterval(crearAliens, 2500);
+    nave.dibujar();
+
+  
+   
+  
+
+  //setInterval(crearAliens, 2500);
   
  
 };
 
 const moverNave = (e) => {
   nave.borrar();
+  if (estaCorriendo){
   if (e.key === "ArrowLeft"&& nave.x > 0) {
     nave.x -= 10;
   }
@@ -98,6 +118,7 @@ const moverNave = (e) => {
     nave.y += 10;
   }
   nave.dibujar();
+  }
 };
 
 const dispara = (i) => {
