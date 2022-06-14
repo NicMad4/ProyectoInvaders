@@ -1,8 +1,8 @@
 body {
-    font-family: sans-serif;
-    text-align: center;
+    font-family:'Press Start 2P';
+    text-align: center ;
     margin: 0 auto;
-    background-image: src/;
+    
   }
 
 #canvas{
@@ -13,7 +13,8 @@ display: flexbox;
   width: 100%;
   text-align: center;
   margin: 0 auto;
-  background-color: white;
+  background-color: black;
+  background-image: url("./imagenes/marsatacks.png");
 }
 
 .hidden{
@@ -27,9 +28,35 @@ display: flexbox;
 }
 
 #botonStart{
+   text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: yellow;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 6px;
+    border: 2px solid yellow;
+    background-color:goldenrod;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: -110px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#restart{
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: yellow;
+  font-family: 'Press Start 2P', cursive;
+  border-radius: 6px;
+  border: 2px solid yellow;
   background-color:goldenrod;
   position: absolute;
-  margin-top: 300px;
-  margin-left: -80px;
+  margin-top: -300px;
+  margin-left: -110px;
   border-radius: 5px;
+  cursor: pointer;
 }

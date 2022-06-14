@@ -16,6 +16,7 @@ let intervalIdAlien=''
 
 const aliens = [];
 const balas =[];
+let puntos=0
 
 const nave = new Objeto(300, 600, 100, 100, naveImagen, ctx);
 let estaCorriendo = true;
@@ -27,10 +28,11 @@ const jugar = () => {
     
   }
   //console.log(estaCorriendo)
-  animarAlien()
+  animarAlien();
 
   animarBalas();
-  comproColision()
+  comproColision();
+  score();
 };
 const comproColision =() =>{
   for (let i=0;i<aliens.length;i++) {
@@ -44,6 +46,7 @@ const comproColision =() =>{
         unAlien.borrar()
         balas.splice(j,1) //compara con array de balas
         unaBala.borrar()
+        puntos+=100;
       }
 
       
@@ -51,7 +54,16 @@ const comproColision =() =>{
       
     }
   }
-}
+};
+function score() {
+  ctx.fillStyle = "white";
+  ctx.clearRect(0, 0, canvas.width, 40);
+  ctx.font = "normal 20px 'Press Start 2P'";
+  ctx.fillText("SCORE " + puntos, 10, 20);
+  
+
+};
+
 const animarAlien=() => {
   for (let alien of aliens) {
     alien.borrar();
@@ -105,8 +117,8 @@ const crearBalas = () => {
   const bala = new Objeto(
     nave.x + 49,
      nave.y,
-    40,
-    40,
+    4,
+    4,
     balaImagen,
     ctx
   );
@@ -155,6 +167,8 @@ const dispara = (i) => {
   
   }
 };
+
+
 
 const botonStart = document.getElementById('botonStart')
 const divBotonStart = document.getElementById('startMenu')
