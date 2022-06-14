@@ -26,32 +26,54 @@ const jugar = () => {
     clearInterval(intervalIdAlien)
     
   }
-  console.log(estaCorriendo)
+  //console.log(estaCorriendo)
+  animarAlien()
+
+  animarBalas();
+  comproColision()
+};
+const comproColision =() =>{
+  for (let i=0;i<aliens.length;i++) {
+    for (let j=0;j<balas.length;j++) {
+       enemigosArr = aliens[i];
+       balasArr = balas[j];
+      
+      
+      
+      if(balasArr.x===enemigosArr.x&&balasArr.y===enemigosArr.y){
+        console.log('hit')
+      }
+    }
+  }
+}
+const animarAlien=() => {
   for (let alien of aliens) {
     alien.borrar();
     alien.y += 5;
     alien.dibujar();
-
+    //console.log(alien)
     
     
     
     if (alien.detectarColision(nave)) {
       estaCorriendo=false
-      console.log('Game Over')
+      //console.log('Game Over')
+      const gameOver= document.getElementById('GameOver')
+      gameOver.classList.remove('hidden')
       //alert ("Game Over");
      
       
       
     }
   }
-  animarBalas();
-};
+}
 //frustación mode ON
 const animarBalas = () => {
   for (let bala of balas) {
     bala.borrar();
     bala.y -= 60;
     bala.dibujar();
+    //console.log(bala)
    /* if (bala.detectarColision(aliens)) {
       console.log('muerte a los verdes')
       }*/
@@ -77,8 +99,8 @@ const crearBalas = () => {
   const bala = new Objeto(
     nave.x + 49,
      nave.y,
-    4,
-    4,
+    40,
+    40,
     balaImagen,
     ctx
   );
@@ -120,17 +142,23 @@ const moverNave = (e) => {
 };
 
 const dispara = (i) => {
- console.log(i.key)
+ //console.log(i.key)
   if ( i.key === ' '){ //el puto Space no se llama Space 
-    console.log('dispara')
+    
    crearBalas();
   
   }
 };
 
+const botonStart = document.getElementById('botonStart')
+const divBotonStart = document.getElementById('startMenu')
 
-
-window.addEventListener("load", cargaInicial);//Aqui empieza todo
+botonStart.addEventListener('click',function(){
+  cargaInicial()
+  divBotonStart.classList.add('hidden')//esconde la división
+  botonStart.classList.add('hidden')//esconde el botón
+})
+//window.addEventListener("load", cargaInicial);//Aqui empieza todo
 
 window.addEventListener("keydown", moverNave);//aqui empieza el movimiento de comandos
 

@@ -4,10 +4,6 @@ body {
     margin: 0 auto;
   }
 
-
-
-
-
 #canvas{
 display: flexbox;
 
@@ -17,4 +13,8 @@ display: flexbox;
   text-align: center;
   margin: 0 auto;
   background-color: white;
+}
+
+.hidden{
+  display: none;
 }
