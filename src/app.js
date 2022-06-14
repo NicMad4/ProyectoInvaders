@@ -35,14 +35,20 @@ const jugar = () => {
 const comproColision =() =>{
   for (let i=0;i<aliens.length;i++) {
     for (let j=0;j<balas.length;j++) {
-       enemigosArr = aliens[i];
-       balasArr = balas[j];
-      
-      
-      
-      if(balasArr.x===enemigosArr.x&&balasArr.y===enemigosArr.y){
-        console.log('hit')
+      let unAlien = aliens[i];
+      let unaBala = balas[j];
+      unAlien.detectarColision(unaBala)
+      //console.log(unAlien.detectarColision(unaBala))
+      if(unAlien.detectarColision(unaBala)){
+        aliens.splice(i,1) //compara con array de aliens 
+        unAlien.borrar()
+        balas.splice(j,1) //compara con array de balas
+        unaBala.borrar()
       }
+
+      
+      
+      
     }
   }
 }

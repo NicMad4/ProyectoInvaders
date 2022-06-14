@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     text-align: center;
     margin: 0 auto;
+    background-image: src/;
   }
 
 #canvas{
@@ -17,4 +18,18 @@ display: flexbox;
 
 .hidden{
   display: none;
+}
+
+#GameOver{
+  position: absolute;
+  margin-top: -16px;
+  margin-left:400px ;
+}
+
+#botonStart{
+  background-color:goldenrod;
+  position: absolute;
+  margin-top: 300px;
+  margin-left: -80px;
+  border-radius: 5px;
 }
