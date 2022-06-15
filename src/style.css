@@ -71,3 +71,10 @@ display: flexbox;
   cursor: pointer;
   
 }
+
+#finalScore{
+  color: yellow;
+  position: absolute;
+  margin-top: -100px;
+  margin-left: 190px;
+}

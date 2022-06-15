@@ -34,20 +34,5 @@ class Objeto {
 
   };
 
-  /*comprobarPosicionEnCanvas() {
-    if (this.x >= ctx.canvas.width - this.ancho) {
-      return "derecha";
-    }
-    if (this.x <= 0) {
-      return "izquierda";
-    }
-    if (this.y <= 0) {
-      return "arriba";
-    }
-    if (this.y >= ctx.canvas.width - this.ancho) {
-      return "abajo";
-    }
-    return "dentro";
-  }*/
 }
 

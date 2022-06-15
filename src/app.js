@@ -62,8 +62,10 @@ const comproColision =() =>{
         unaBala.borrar()
         playMusicaJuego(puntosAudio)
         puntos+=100;
+        const finalScore= document.getElementById('finalScore')//adentro de la funcion para que me devuelva los puntos
+        finalScore.innerHTML= 'Final Score: '+ puntos +'!'//adentro de la funcion para que me devuelva los puntos
       }
-
+         
       
       
       
