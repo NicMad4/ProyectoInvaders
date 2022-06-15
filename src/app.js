@@ -84,13 +84,14 @@ function score() {
 const animarAlien=() => {
   for (let alien of aliens) {
     alien.borrar();
-    alien.y += 5;
+    alien.y += Math.floor(Math.random()*(20-5)+5);
+    console.log(alien.y)
     alien.dibujar();
     //console.log(alien)
     
     
     
-    if (alien.detectarColision(nave)) {
+    if (alien.detectarColision(nave)||alien.y>=700) {//si detecta colision con nave o si pasa el limite del canvas
       playMusicaJuego(choqueAudio)
       playMusicaJuego(gameOverAudio)
       estaCorriendo=false
