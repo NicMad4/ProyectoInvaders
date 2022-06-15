@@ -4,13 +4,13 @@ const ctx = canvas.getContext("2d");
 canvas.style.backgroundColor = "lightgray";//color de fondo del canvas (una estupidez porque no se ve)
 
 let naveImagen = new Image();
-naveImagen.src = "src/imagenes/spaceship2.png";
+naveImagen.src = "./src/imagenes/spaceship2.png";
 
 let alienImagen = new Image();
-alienImagen.src = "src/imagenes/alien2.png";
+alienImagen.src = "./src/imagenes/alien2.png";
 
 let balaImagen = new Image();
-balaImagen.src = "src/imagenes/bala.png"
+balaImagen.src = "./src/imagenes/bala.png"
 let intervalId=''
 let intervalIdAlien=''
 
