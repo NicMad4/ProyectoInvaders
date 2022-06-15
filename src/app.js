@@ -1,8 +1,5 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
-
-canvas.style.backgroundColor = "lightgray";//color de fondo del canvas (una estupidez porque no se ve)
-
 let naveImagen = new Image();
 naveImagen.src = "./src/imagenes/spaceship2.png";
 
@@ -11,6 +8,7 @@ alienImagen.src = "./src/imagenes/alien2.png";
 
 let balaImagen = new Image();
 balaImagen.src = "./src/imagenes/bala.png"
+
 let intervalId=''
 let intervalIdAlien=''
 
@@ -20,6 +18,22 @@ let puntos=0
 
 const nave = new Objeto(300, 600, 100, 100, naveImagen, ctx);
 let estaCorriendo = true;
+
+const choqueAudio = new Audio("./src/sonidos/choque.mp3");
+const disparoLaserAudio = new Audio("./src/sonidos/disparolaser.mp3");
+const gameOverAudio = new Audio("./src/sonidos/game-over.mp3");
+const puntosAudio = new Audio("./src/sonidos/puntos.mp3");
+const risaMalvadaAudio = new Audio("./src/sonidos/risa-malvada-restart.mp3");
+const startAudio = new Audio("./src/sonidos/start.mp3");
+
+
+function playMusicaJuego(musicaJuego) {   
+  musicaJuego.currentTime = 0;
+  musicaJuego.volume = 1;
+  musicaJuego.loop = false;
+  musicaJuego.play();
+}
+
 
 const jugar = () => {
   if(!estaCorriendo){
@@ -46,6 +60,7 @@ const comproColision =() =>{
         unAlien.borrar()
         balas.splice(j,1) //compara con array de balas
         unaBala.borrar()
+        playMusicaJuego(puntosAudio)
         puntos+=100;
       }
 
@@ -74,6 +89,8 @@ const animarAlien=() => {
     
     
     if (alien.detectarColision(nave)) {
+      playMusicaJuego(choqueAudio)
+      playMusicaJuego(gameOverAudio)
       estaCorriendo=false
       //console.log('Game Over')
       const gameOver= document.getElementById('GameOver')
@@ -130,6 +147,7 @@ const cargaInicial = () => {
     intervalId = setInterval(jugar, 200);
     intervalIdAlien = setInterval(crearAliens, 2500);
     nave.dibujar();
+    playMusicaJuego(startAudio);
 
   
    
@@ -140,7 +158,7 @@ const cargaInicial = () => {
  
 };
 
-const moverNave = (e) => {
+const moverNave = (e) => {  //mueve la nave
   nave.borrar();
   if (estaCorriendo){
   if (e.key === "ArrowLeft"&& nave.x > 0) {
@@ -159,17 +177,18 @@ const moverNave = (e) => {
   }
 };
 
-const dispara = (i) => {
+const dispara = (i) => {  //funcion que llama a la funcion crear balas cuando pulsas la key selecionada
  //console.log(i.key)
   if ( i.key === ' '){ //el puto Space no se llama Space 
     
    crearBalas();
+   playMusicaJuego(disparoLaserAudio);
   
   }
 };
 
 
-
+//boton de start
 const botonStart = document.getElementById('botonStart')
 const divBotonStart = document.getElementById('startMenu')
 
@@ -178,7 +197,17 @@ botonStart.addEventListener('click',function(){
   divBotonStart.classList.add('hidden')//esconde la división
   botonStart.classList.add('hidden')//esconde el botón
 })
-//window.addEventListener("load", cargaInicial);//Aqui empieza todo
+
+function resetCanvas(){ //boton de reset
+  playMusicaJuego(risaMalvadaAudio)
+  restartGame = document.getElementById("restart");
+  restartGame.addEventListener("click",function(){
+    window.location.reload();
+    
+  }); 
+  } 
+
+
 
 window.addEventListener("keydown", moverNave);//aqui empieza el movimiento de comandos
 
